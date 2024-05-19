@@ -9,24 +9,26 @@ Average _rent
 average rent (euro/month)             2311
 average rent per surface (euro/m2)    2311
 Name: count, dtype: int64
-                           Average _rent   Price
-1484  average rent per surface (euro/m2)   10.52
-2449           average rent (euro/month)  564.56
-2275           average rent (euro/month)  834.68
-1208           average rent (euro/month)  786.32
-2249           average rent (euro/month)  744.82
-1062  average rent per surface (euro/m2)   10.73
-352   average rent per surface (euro/m2)    7.27
-364   average rent per surface (euro/m2)   11.76
-1171           average rent (euro/month)  659.35
-2151  average rent per surface (euro/m2)   16.19
+                           Average _rent    Price
+697            average rent (euro/month)   632.00
+3468           average rent (euro/month)   853.80
+1037  average rent per surface (euro/m2)    11.81
+1237           average rent (euro/month)   666.17
+1394  average rent per surface (euro/m2)    15.06
+3730           average rent (euro/month)   688.90
+1617  average rent per surface (euro/m2)    11.56
+1329           average rent (euro/month)  1298.95
+1034  average rent per surface (euro/m2)    11.45
+2338           average rent (euro/month)  1136.21
 Es mostren les primeres files del DataFrame per a verificar les noves columnes
-   Year  Trimester      District                          Neighbourhood              Average _rent   Price  Price_monthly  Price_per_m2       Date
-0  2014          1  Ciutat Vella                               el Raval  average rent (euro/month)  589.55         589.55           NaN 2014-01-01
-1  2014          1  Ciutat Vella                         Gothic Quarter  average rent (euro/month)  712.79         712.79           NaN 2014-01-01
-2  2014          1  Ciutat Vella                         la Barceloneta  average rent (euro/month)  540.71         540.71           NaN 2014-01-01
-3  2014          1  Ciutat Vella  Sant Pere, Santa Caterina i la Ribera  average rent (euro/month)  673.44         673.44           NaN 2014-01-01
-4  2014          1      Eixample                             Fort Pienc  average rent (euro/month)  736.09         736.09           NaN 2014-01-01
+   Year  Trimester      District                          Neighbourhood  ...   Price  Price_monthly  Price_per_m2       Date
+0  2014          1  Ciutat Vella                               el Raval  ...  589.55         589.55           NaN 2014-01-01
+1  2014          1  Ciutat Vella                         Gothic Quarter  ...  712.79         712.79           NaN 2014-01-01
+2  2014          1  Ciutat Vella                         la Barceloneta  ...  540.71         540.71           NaN 2014-01-01
+3  2014          1  Ciutat Vella  Sant Pere, Santa Caterina i la Ribera  ...  673.44         673.44           NaN 2014-01-01
+4  2014          1      Eixample                             Fort Pienc  ...  736.09         736.09           NaN 2014-01-01
+
+[5 rows x 9 columns]
 Informació general de nou del dataset
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 4622 entries, 0 to 4621
@@ -45,3 +47,115 @@ Data columns (total 9 columns):
 dtypes: datetime64[ns](1), float64(3), int64(2), object(3)
 memory usage: 325.1+ KB
 None
+Distritos de Barcelona:
+['Ciutat Vella' 'Eixample' 'Sants-Montjuic' 'Les Corts'
+ 'Sarria-Sant Gervasi' 'Gracia' 'Horta-Guinardo' 'Nou Barris'
+ 'Sant Andreu' 'Sant Marti']
+
+Barrios de Barcelona:
+['el Raval' 'Gothic Quarter' 'la Barceloneta'
+ 'Sant Pere, Santa Caterina i la Ribera' 'Fort Pienc' 'Sagrada Familia'
+ "la Dreta de l'Eixample" "l'Antiga Esquerra de l'Eixample"
+ "la Nova Esquerra de l'Eixample" 'Sant Antoni' 'el Poble Sec'
+ 'la Marina de Port' 'la Font de la Guatlla' 'Hostafrancs' 'la Bordeta'
+ 'Sants - Badal' 'Sants' 'les Corts' 'la Maternitat i Sant Ramon'
+ 'Pedralbes' 'Vallvidrera, el Tibidabo i les Planes' 'Sarria'
+ 'les Tres Torres' 'Sant Gervasi - la Bonanova' 'Sant Gervasi - Galvany'
+ 'el Putxet i el Farro' 'Vallcarca i els Penitents' 'el Coll' 'la Salut'
+ 'la Vila de Gracia' "el Camp d'en Grassot i Gracia Nova"
+ 'el Baix Guinardo' 'Can Baro' 'el Guinardo' "la Font d'en Fargues"
+ 'el Carmel' 'la Teixonera' 'Sant Genis dels Agudells' 'Montbau'
+ "la Vall d'Hebron" 'Horta' 'Vilapicina i la Torre Llobeta' 'Porta'
+ 'el Turo de la Peira' 'Can Peguera' 'la Guineueta' 'Canyelles'
+ 'les Roquetes' 'Verdun' 'la Prosperitat' 'la Trinitat Nova'
+ 'Ciutat Meridiana' 'la Trinitat Vella' 'el Bon Pastor' 'Sant Andreu'
+ 'la Sagrera' 'el Congres i els Indians' 'Navas'
+ "el Camp de l'Arpa del Clot" 'el Clot'
+ 'el Parc i la Llacuna del Poblenou' 'la Vila Olimpica del Poblenou'
+ 'el Poblenou' 'Diagonal Mar i el Front Maritim del Poblenou'
+ 'el Besos i el Maresme' 'Provencals del Poblenou'
+ 'Sant Marti de Provencals' 'la Verneda i la Pau' 'Torre Baro'
+ 'Baro de Viver' 'la Marina del Prat Vermell' 'Vallbona' 'la Clota'
+ 'la Sagrada Familia' 'Sant Martíide Provencals']
+el Raval: (41.3795176, 2.1683678)
+Gothic Quarter: (41.3833947, 2.1769119)
+la Barceloneta: (41.3806533, 2.1899274)
+Sant Pere, Santa Caterina i la Ribera: (41.3883219, 2.1774107)
+Fort Pienc: (41.3959246, 2.1823245)
+Sagrada Familia: (41.4035046, 2.174428284189003)
+la Dreta de l'Eixample: (41.3950373, 2.1672069)
+l'Antiga Esquerra de l'Eixample: (41.39, 2.155)
+la Nova Esquerra de l'Eixample: (41.383389, 2.149)
+Sant Antoni: (41.3802503, 2.1633286)
+el Poble Sec: (41.3749795, 2.1605721)
+la Marina de Port: (41.3602964, 2.1375842)
+la Font de la Guatlla: (41.3707824, 2.1446756)
+Hostafrancs: (41.3752298, 2.143673)
+la Bordeta: (41.3691417, 2.1373733)
+Sants - Badal: (41.375466, 2.1277096)
+Sants: (41.3753288, 2.1349117)
+les Corts: (41.385244, 2.1328626)
+la Maternitat i Sant Ramon: (41.3819857, 2.1256083)
+Pedralbes: (41.3901401, 2.112218)
+Vallvidrera, el Tibidabo i les Planes: (41.4150674, 2.1074824)
+Sarria: (41.399373, 2.1215125)
+les Tres Torres: (41.3976108, 2.1311837)
+Sant Gervasi - la Bonanova: (41.4059829, 2.1334046)
+Sant Gervasi - Galvany: (41.397795450000004, 2.143382596198851)
+el Putxet i el Farro: (41.40731705, 2.143424283829363)
+Vallcarca i els Penitents: (41.4155257, 2.1422431)
+el Coll: (41.4179072, 2.1480753)
+la Salut: (41.442733, 2.2245758)
+la Vila de Gracia: (41.4031783, 2.1571662)
+el Camp d'en Grassot i Gracia Nova: (41.4045889, 2.1667806)
+el Baix Guinardo: (41.4114374, 2.1686512)
+Can Baro: (41.4160925, 2.1624018)
+el Guinardo: (41.4177335, 2.1736316)
+la Font d'en Fargues: (41.425788, 2.1659152)
+el Carmel: (41.4256037, 2.1549579)
+la Teixonera: (41.423173, 2.1459698)
+Sant Genis dels Agudells: (41.4264567, 2.1374905)
+Montbau: (41.4295619, 2.1444759)
+la Vall d'Hebron: (41.4303788, 2.1486244)
+Horta: (41.4297275, 2.1602552)
+Vilapicina i la Torre Llobeta: (41.4300186, 2.1760694)
+Porta: (41.4331882, 2.1760336)
+el Turo de la Peira: (41.4323672, 2.1690681)
+Can Peguera: (41.4348568, 2.1657848)
+la Guineueta: (41.4403026, 2.1704023)
+Canyelles: (41.2858273, 1.7222743)
+les Roquetes: (41.4477984, 2.1762713)
+Verdun: (41.4440404, 2.1758401)
+la Prosperitat: (41.4423335, 2.1794381)
+la Trinitat Nova: (41.4497136, 2.1838414)
+Ciutat Meridiana: (41.4606649, 2.1744744)
+la Trinitat Vella: (41.4501759, 2.1913441)
+el Bon Pastor: (41.4359841, 2.2051289)
+Sant Andreu: (41.4372495, 2.1954872)
+la Sagrera: (41.4212795, 2.186523)
+el Congres i els Indians: (41.423784, 2.180820595215633)
+Navas: (41.4160445, 2.1869379)
+el Camp de l'Arpa del Clot: (41.4107542, 2.1828156)
+el Clot: (41.4090696, 2.1874108)
+el Parc i la Llacuna del Poblenou: (41.4007334, 2.191342)
+la Vila Olimpica del Poblenou: (41.3898682, 2.1968459)
+el Poblenou: (41.400527, 2.2017292)
+Diagonal Mar i el Front Maritim del Poblenou: (41.4052285, 2.2133522)
+el Besos i el Maresme: (41.4149787, 2.2138765)
+Provencals del Poblenou: (41.4119484, 2.2041249)
+Sant Marti de Provencals: (41.4165186, 2.1989683)
+la Verneda i la Pau: (41.4232198, 2.202940152045822)
+Torre Baro: (41.4580108, 2.1839863)
+Baro de Viver: (41.4499297, 2.1995232)
+la Marina del Prat Vermell: (41.3538419, 2.1423184)
+Vallbona: (41.5194769, 1.7082922)
+la Clota: (41.4278574, 2.1524066)
+la Sagrada Familia: (41.4044407, 2.1748611)
+   Year  Trimester      District                          Neighbourhood  ... Price_per_m2       Date   Latitude  Longitude
+0  2014          1  Ciutat Vella                               el Raval  ...          NaN 2014-01-01  41.379518   2.168368
+1  2014          1  Ciutat Vella                         Gothic Quarter  ...          NaN 2014-01-01  41.383395   2.176912
+2  2014          1  Ciutat Vella                         la Barceloneta  ...          NaN 2014-01-01  41.380653   2.189927
+3  2014          1  Ciutat Vella  Sant Pere, Santa Caterina i la Ribera  ...          NaN 2014-01-01  41.388322   2.177411
+4  2014          1      Eixample                             Fort Pienc  ...          NaN 2014-01-01  41.395925   2.182325
+
+[5 rows x 11 columns]

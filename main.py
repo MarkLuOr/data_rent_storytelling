@@ -2,6 +2,9 @@ import pandas as pd
 import sys
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
+import geopy
+from geopy.geocoders import Nominatim
 
 
 # Es guarden les sortides en un arxiu de text
@@ -14,12 +17,12 @@ data = pd.read_csv("Barcelona_rent_price.csv")
 print(data.head())
 
 unique_values = data['Average _rent'].unique()
-print(unique_values[:10])  # Mostrar los primeros 10 valores únicos
+print(unique_values[:10])  # Es mostren els 10 primers valors unics
 
 value_counts = data['Average _rent'].value_counts()
 print(value_counts)
 
-sample_data = data.sample(10)  # Seleccionar 10 filas al azar
+sample_data = data.sample(10)  # Es seleccionen 10 filas al atzar
 print(sample_data[['Average _rent', 'Price']])
 
 data = data.replace([float('inf'), float('-inf')], pd.NA)
@@ -33,13 +36,13 @@ def convert_to_date(row):
     year = row['Year']
     trimester = row['Trimester']
     if trimester == 1:
-        month = 1  # Primer trimestre comienza en enero
+        month = 1  # Primer trimestre comença gener
     elif trimester == 2:
-        month = 4  # Segundo trimestre comienza en abril
+        month = 4  # Segon trimestre comença abril
     elif trimester == 3:
-        month = 7  # Tercer trimestre comienza en julio
+        month = 7  # Tercer trimestre comença juliol
     elif trimester == 4:
-        month = 10 # Cuarto trimestre comienza en octubre
+        month = 10 # Quart trimestre comença octubre
     return pd.Timestamp(year=year, month=month, day=1)
 
 data['Date'] = data.apply(convert_to_date, axis=1)
@@ -49,7 +52,7 @@ print(data.head())
 print('Informació general de nou del dataset')
 print(data.info())
 
-# Configuració ngeneral de l'estil de Seaborn
+# Configuració general de l'estil de Seaborn
 sns.set(style="whitegrid")
 
 # Evolució del preu mensual
@@ -125,7 +128,92 @@ plt.tight_layout()
 plt.savefig("Mapa de calor de preus mensuals mitjans de lloguer per barri i any.png")
 plt.close()
 
+# Es filtren les dades no nul·les de Price_monthly
+data_monthly = data.dropna(subset=['Price_monthly'])
 
+# Es crea el gràfic interactiu de línies
+fig = px.line(data_monthly, x='Date', y='Price_monthly', title='Evolució del Preu de Lloguer Mensual a Barcelona (2014-2022)',
+              labels={'Price_monthly': 'Preu (€)', 'Date': 'Data'})
+
+# Es mostra el gràfic
+fig.write_html("Evolucio_Preu_Lloguer_Mensual_Barcelona.html")
+
+# S'obté una llista dels diferents districtes i barris de Barcelona
+districts = data['District'].unique()
+neighbourhoods = data['Neighbourhood'].unique()
+
+# Es mostren els diferents districtes i barris
+print("Distritos de Barcelona:")
+print(districts)
+print("\nBarrios de Barcelona:")
+print(neighbourhoods)
+
+# S'inicialitza l'objecte de Nominatim 
+geolocator = Nominatim(user_agent="barcelona_explorer")
+
+# Es crea un diccionari per a emmagatzemar les coordenades de longitud i latitud de cada barri
+coordinates = {}
+
+# S'itera sobre cada barri y s'obtenen les coordenades de longitud i latitud
+for neighbourhood in neighbourhoods:
+    location = geolocator.geocode(neighbourhood + ", Barcelona")
+    if location:
+        coordinates[neighbourhood] = (location.latitude, location.longitude)
+
+# Es mostren les coordenades de longitud i latitud de cada barri
+for neighbourhood, coords in coordinates.items():
+    print(f"{neighbourhood}: {coords}")
+
+# S'afegeixen les columnes de longitud i latitud al DataFrame data
+data['Latitude'] = data['Neighbourhood'].map(lambda x: coordinates[x][0] if x in coordinates else None)
+data['Longitude'] = data['Neighbourhood'].map(lambda x: coordinates[x][1] if x in coordinates else None)
+
+
+print(data.head())
+
+# Es filtren les dades per al trimestre 1 de l'any 2022 i on el preu mensual no sigui nul
+data_trimestre1_2022 = data[(data['Year'] == 2022) & (data['Trimester'] == 1) & (data['Price_monthly'].notnull())]
+
+# Es crea el gràfic del mapa interactiu
+fig = px.scatter_mapbox(data_trimestre1_2022, 
+                         lat="Latitude", 
+                         lon="Longitude", 
+                         hover_name="Neighbourhood", 
+                         hover_data={"Latitude": False, "Longitude": False, "Price_monthly": True},
+                         color="Price_monthly",  
+                         color_continuous_scale=px.colors.sequential.Viridis,
+                         size_max=15, 
+                         zoom=10,
+                         mapbox_style="carto-positron",
+                         title="Preu Mig Mensual de Lloguer per Barri a Barcelona (Trimestre 1, 2022)")
+
+# S'actualitza el diseny del mapa 
+fig.update_layout(margin=dict(r=0, t=30, l=0, b=0))
+
+# Es guarda el mapa interactiu com un arxiu HTML
+fig.write_html("mapa_interactiu_trimestre1_2022.html")
+                        
+ # Es filtren les dades per al trimestre 2 de l'any 2022 i on el preu per metre quadrat no sigui nul
+data_trimestre2_2022 = data[(data['Year'] == 2022) & (data['Trimester'] == 2) & (data['Price_per_m2'].notnull())]
+
+# Es crea el gràfic del mapa interactiu
+fig = px.scatter_mapbox(data_trimestre2_2022, 
+                         lat="Latitude", 
+                         lon="Longitude", 
+                         hover_name="Neighbourhood", 
+                         hover_data={"Latitude": False, "Longitude": False, "Price_per_m2": True},
+                         color="Price_per_m2",  # Aquí se define el color en función del precio por metro cuadrado
+                         color_continuous_scale=px.colors.sequential.Viridis,
+                         size_max=15, 
+                         zoom=10,
+                         mapbox_style="carto-positron",
+                         title="Preu Mitjà per Metre Quadrat de Lloguer per Barri a Barcelona (Trimestre 2, 2022)")
+
+# S'actualitza el disseny del mapa
+fig.update_layout(margin=dict(r=0, t=30, l=0, b=0))
+
+# Es guarda el mapa interactiu com un arxiu HTML 
+fig.write_html("mapa_interactiu_trimestre2_2022.html")     
 
 # Restauració del output estàndar a consola 
 sys.stdout.close()
