@@ -9,17 +9,17 @@ Average _rent
 average rent (euro/month)             2311
 average rent per surface (euro/m2)    2311
 Name: count, dtype: int64
-                           Average _rent    Price
-697            average rent (euro/month)   632.00
-3468           average rent (euro/month)   853.80
-1037  average rent per surface (euro/m2)    11.81
-1237           average rent (euro/month)   666.17
-1394  average rent per surface (euro/m2)    15.06
-3730           average rent (euro/month)   688.90
-1617  average rent per surface (euro/m2)    11.56
-1329           average rent (euro/month)  1298.95
-1034  average rent per surface (euro/m2)    11.45
-2338           average rent (euro/month)  1136.21
+                           Average _rent   Price
+4617  average rent per surface (euro/m2)   17.50
+4470  average rent per surface (euro/m2)   10.10
+360   average rent per surface (euro/m2)   12.52
+2675  average rent per surface (euro/m2)   14.37
+1502  average rent per surface (euro/m2)   10.38
+1732           average rent (euro/month)  760.98
+2032  average rent per surface (euro/m2)   11.00
+334   average rent per surface (euro/m2)   12.37
+2413           average rent (euro/month)  831.19
+3365  average rent per surface (euro/m2)   16.30
 Es mostren les primeres files del DataFrame per a verificar les noves columnes
    Year  Trimester      District                          Neighbourhood  ...   Price  Price_monthly  Price_per_m2       Date
 0  2014          1  Ciutat Vella                               el Raval  ...  589.55         589.55           NaN 2014-01-01
@@ -47,12 +47,12 @@ Data columns (total 9 columns):
 dtypes: datetime64[ns](1), float64(3), int64(2), object(3)
 memory usage: 325.1+ KB
 None
-Distritos de Barcelona:
+Districtes de Barcelona:
 ['Ciutat Vella' 'Eixample' 'Sants-Montjuic' 'Les Corts'
  'Sarria-Sant Gervasi' 'Gracia' 'Horta-Guinardo' 'Nou Barris'
  'Sant Andreu' 'Sant Marti']
 
-Barrios de Barcelona:
+Barris de Barcelona:
 ['el Raval' 'Gothic Quarter' 'la Barceloneta'
  'Sant Pere, Santa Caterina i la Ribera' 'Fort Pienc' 'Sagrada Familia'
  "la Dreta de l'Eixample" "l'Antiga Esquerra de l'Eixample"

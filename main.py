@@ -143,9 +143,9 @@ districts = data['District'].unique()
 neighbourhoods = data['Neighbourhood'].unique()
 
 # Es mostren els diferents districtes i barris
-print("Distritos de Barcelona:")
+print("Districtes de Barcelona:")
 print(districts)
-print("\nBarrios de Barcelona:")
+print("\nBarris de Barcelona:")
 print(neighbourhoods)
 
 # S'inicialitza l'objecte de Nominatim 
